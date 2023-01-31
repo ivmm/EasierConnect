@@ -26,42 +26,8 @@ jobs:
           - goarch: 386
             goos: darwin
         include:
-          # BEGIN Linux ARM 5 6 7
-          - goos: linux
-            goarch: arm
-            goarm: 7
-          - goos: linux
-            goarch: arm
-            goarm: 6
-          - goos: linux
-            goarch: arm
-            goarm: 5
-          # END Linux ARM 5 6 7
-          # BEGIN Windows ARM 7
-          - goos: windows
-            goarch: arm
-            goarm: 7
-          # END Windows ARM 7
-          # BEGIN Other architectures
-          - goos: darwin
-            goarch: arm64
           - goos: linux
             goarch: arm64
-          - goos: linux
-            goarch: riscv64
-          - goos: windows
-            goarch: arm64
-          - goos: android
-            goarch: arm64
-          # BEGIN MIPS
-          - goos: linux
-            goarch: mips64
-          - goos: linux
-            goarch: mips64le
-          - goos: linux
-            goarch: mipsle
-          - goos: linux
-            goarch: mips
           # END MIPS
           # END Other architectures
       fail-fast: false
@@ -108,7 +74,6 @@ jobs:
           popd || exit 1
       
       - name: Upload release binary
-        if: github.event_name == 'release'
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
