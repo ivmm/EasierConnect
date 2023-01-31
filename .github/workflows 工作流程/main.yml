@@ -106,6 +106,14 @@ jobs:
           pushd build_assets || exit 1
           zip -9vr ../EasierConnect-$ASSET_NAME.zip .
           popd || exit 1
+          
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.2
+        with:
+          # Artifact name
+            name: # optional
+          # Destination path
+            path: # optional
       
       - name: Upload release binary
         if: github.event_name == 'release'
